@@ -1,0 +1,22 @@
+name: Deploy to Ubuntu Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Copy Files to Server
+        run: |
+          scp -r . vikasms07@192.168.0.104:/var/www/html/DevOps
+
+      - name: Install Dependencies on Server
+        run: |
+          ssh vikasms07@192.168.0.104 'cd /var/www/html/DevOps && npm install && pm2 restart index.js'
