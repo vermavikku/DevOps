@@ -3,7 +3,7 @@ const server = express();
 
 
 server.use("/",(req,res)=>{
-    res.json({Message : "Hello World , Vikas Here Nice"})
+    res.json({Message : "Hello World , Vikas Here vk"})
 })
 
 
